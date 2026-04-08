@@ -112,6 +112,8 @@ label:hover {
     display: none;
 }
 </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 
 <body>
@@ -244,13 +246,22 @@ function submitExam() {
 
 // ================= PDF =================
 function downloadPDF(score) {
-    const text = `MERN MCQ Test Result\nScore: ${score}/30`;
-    const blob = new Blob([text], { type: "application/pdf" });
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
 
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = "result.pdf";
-    link.click();
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(20);
+    doc.text("MERN MCQ Test Result", 20, 30);
+
+    doc.setFontSize(14);
+    doc.setFont("helvetica", "normal");
+
+    doc.text(`Score: ${score} / 30`, 20, 50);
+    doc.text(`Status: ${score >= 15 ? "Pass" : "Fail"}`, 20, 60);
+
+    doc.text("Powered by Marshall Institute", 20, 80);
+
+    doc.save("Result.pdf");
 }
 </script>
 
