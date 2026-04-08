@@ -1,229 +1,206 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Development Cell | Hiring</title>
+<title>MERN MCQ Test</title>
 
 <style>
-:root{
-  --black:#000;
-  --white:#fff;
-  --gray:#bfbfbf;
+body {
+    font-family: Arial;
+    background: #0f172a;
+    color: white;
+    margin: 0;
+    padding: 20px;
 }
 
-*{
-  box-sizing:border-box;
-  font-family:"Segoe UI", sans-serif;
+.container {
+    max-width: 900px;
+    margin: auto;
 }
 
-body{
-  margin:0;
-  background:var(--black);
-  color:var(--white);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  min-height:100vh;
+button {
+    padding: 12px 20px;
+    border: none;
+    background: #22c55e;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
 }
 
-.container{
-  width:90%;
-  max-width:900px;
-  background:#0c0c0c;
-  border:1px solid var(--gray);
-  border-radius:14px;
-  overflow:hidden;
-  animation:fadeIn 1s ease;
+.question {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #1e293b;
+    border-radius: 10px;
 }
 
-/* Header */
-.header{
-  text-align:center;
-  padding:30px;
-  border-bottom:1px solid #222;
-}
-
-.header h1{
-  margin:0;
-  font-size:2.2rem;
-  letter-spacing:1px;
-}
-
-.header p{
-  color:var(--gray);
-  margin-top:10px;
-}
-
-/* Tabs */
-.tabs{
-  display:flex;
-  background:#000;
-}
-
-.tab{
-  flex:1;
-  padding:15px;
-  text-align:center;
-  cursor:pointer;
-  transition:0.3s;
-  border-bottom:3px solid transparent;
-}
-
-.tab:hover{
-  background:#111;
-}
-
-.tab.active{
-  border-bottom:3px solid var(--white);
-  font-weight:600;
-}
-
-/* Content */
-.content{
-  padding:30px;
-  display:none;
-  animation:slideUp 0.6s ease;
-}
-
-.content.active{
-  display:block;
-}
-
-/* Buttons */
-.main-btn{
-  display:inline-block;
-  padding:14px 35px;
-  background:var(--white);
-  color:var(--black);
-  text-decoration:none;
-  font-weight:600;
-  border-radius:8px;
-  transition:0.3s;
-}
-
-.main-btn:hover{
-  background:#e0e0e0;
-  transform:translateY(-2px);
-}
-
-/* Event details */
-.info-box{
-  border-left:4px solid var(--white);
-  padding-left:20px;
-}
-
-.info-box h3{
-  margin-top:0;
-}
-
-.round{
-  margin-top:10px;
-  color:var(--gray);
-}
-
-/* Contact */
-.contact-box{
-  text-align:center;
-}
-
-.contact-box p{
-  color:var(--gray);
-  margin:8px 0;
-}
-
-/* Animations */
-@keyframes fadeIn{
-  from{opacity:0}
-  to{opacity:1}
-}
-
-@keyframes slideUp{
-  from{opacity:0; transform:translateY(15px)}
-  to{opacity:1; transform:translateY(0)}
-}
-
-/* Responsive */
-@media(max-width:600px){
-  .header h1{
-    font-size:1.6rem;
-  }
+.hidden {
+    display: none;
 }
 </style>
+
 </head>
 
 <body>
 
 <div class="container">
 
-  <!-- Header -->
-  <div class="header">
-    <h1>The Development Cell</h1>
-    <p>Official Hiring Drive • Open for All Departments</p>
-  </div>
+<h1>MERN MCQ Test</h1>
 
-  <!-- Tabs -->
-  <div class="tabs">
-    <div class="tab active" onclick="openTab(0)">Register</div>
-    <div class="tab" onclick="openTab(1)">Event Details</div>
-    <div class="tab" onclick="openTab(2)">Contact</div>
-  </div>
+<button onclick="startExam()">Start Test</button>
 
-  <!-- Register -->
-  <div class="content active" style="text-align:center;">
-    <p style="color:var(--gray); margin-bottom:25px;">
-      Interested in joining The Development Cell?  
-      Click below to register.
-    </p>
+<p id="warningBox">Warnings Left: 3</p>
 
-    <a href="https://forms.gle/Q3KXZazSsanqdv9G9" target="_blank" class="main-btn">
-      REGISTER HERE
-    </a>
-  </div>
+<form id="quizForm" class="hidden"></form>
 
-  <!-- Event Details -->
-  <div class="content">
-    <div class="info-box">
-      <h3>Hiring Process</h3>
-      <p>
-        The Development Cell is organizing an open hiring drive.  
-        Any student from any department can apply.
-      </p>
-
-      <h4>Selection Rounds</h4>
-      <div class="round">1️⃣ Test Round</div>
-      <div class="round">2️⃣ Personal Interview</div>
-      <div class="round">3️⃣ Group Discussion</div>
-    </div>
-  </div>
-
-  <!-- Contact -->
-  <div class="content">
-    <div class="contact-box">
-      <h3>Contact Details</h3>
-
-      <p>📞 <strong>Mobile:</strong> +91 7888669820</p>
-      
-      <br>
-
-      <a href="https://hackathon-edc.netlify.app/contact" target="_blank" class="main-btn">
-        FEEDBACK / QUERY
-      </a>
-    </div>
-  </div>
+<div id="result" class="hidden"></div>
 
 </div>
 
 <script>
-function openTab(index){
-  let tabs = document.querySelectorAll('.tab');
-  let contents = document.querySelectorAll('.content');
+// ================= QUESTIONS =================
+const questions = [
+["HTML stands for?",["A","B","C","D"]],
+["Hyperlink tag?",["A","B","C","D"]],
+["Image tag?",["A","B","C","D"]],
+["Image path attribute?",["A","B","C","D"]],
+["List item tag?",["A","B","C","D"]],
+["Largest heading?",["A","B","C","D"]],
+["Correct HTML structure?",["A","B","C","D"]],
+["Form tag?",["A","B","C","D"]],
+["Password input type?",["A","B","C","D"]],
+["Table row tag?",["A","B","C","D"]],
+["CSS stands for?",["A","B","C","D"]],
+["Text color property?",["A","B","C","D"]],
+["ID selector?",["A","B","C","D"]],
+["Background color?",["A","B","C","D"]],
+["Text size property?",["A","B","C","D"]],
+["1D layout?",["A","B","C","D"]],
+["Responsive tool?",["A","B","C","D"]],
+["Default position?",["A","B","C","D"]],
+["Inner spacing?",["A","B","C","D"]],
+["Relative unit?",["A","B","C","D"]],
+["Variable keyword?",["A","B","C","D"]],
+["JS comment?",["A","B","C","D"]],
+["Select by id?",["A","B","C","D"]],
+["typeof 'Hello'?",["A","B","C","D"]],
+["Console output?",["A","B","C","D"]],
+["Click event?",["A","B","C","D"]],
+["Array syntax?",["A","B","C","D"]],
+["Strict equality?",["A","B","C","D"]],
+["DOM stands for?",["A","B","C","D"]],
+["Add to array?",["A","B","C","D"]]
+];
 
-  tabs.forEach(tab => tab.classList.remove('active'));
-  contents.forEach(content => content.classList.remove('active'));
+// ================= ANSWERS =================
+const answers = [
+"B","B","A","B","B","C","B","A","B","C",
+"B","C","B","B","C","B","B","C","B","C",
+"D","A","C","A","C","C","B","C","A","A"
+];
 
-  tabs[index].classList.add('active');
-  contents[index].classList.add('active');
+// ================= START EXAM =================
+let warnings = 3;
+
+function startExam() {
+    document.querySelector("button").style.display = "none";
+    document.getElementById("quizForm").classList.remove("hidden");
+
+    enterFullscreen();
+    renderQuestions();
+}
+
+// ================= FULLSCREEN =================
+function enterFullscreen() {
+    document.documentElement.requestFullscreen();
+}
+
+document.addEventListener("fullscreenchange", () => {
+    if (!document.fullscreenElement) {
+        alert("Fullscreen required!");
+        enterFullscreen();
+    }
+});
+
+// ================= TAB SWITCH DETECTION =================
+document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+        warnings--;
+        document.getElementById("warningBox").innerText = "Warnings Left: " + warnings;
+
+        alert("⚠️ Do not switch tabs!");
+
+        if (warnings <= 0) {
+            submitExam();
+        }
+    }
+});
+
+// ================= DISABLE COPY =================
+document.addEventListener("copy", e => e.preventDefault());
+document.addEventListener("contextmenu", e => e.preventDefault());
+
+// ================= RENDER QUESTIONS =================
+function renderQuestions() {
+    const form = document.getElementById("quizForm");
+
+    questions.forEach((q, index) => {
+        let div = document.createElement("div");
+        div.classList.add("question");
+
+        div.innerHTML = `<p>${index+1}. ${q[0]}</p>
+        ${q[1].map(opt =>
+            `<label>
+                <input type="radio" name="q${index}" value="${opt}"> ${opt}
+            </label><br>`
+        ).join("")}`;
+
+        form.appendChild(div);
+    });
+
+    let submitBtn = document.createElement("button");
+    submitBtn.innerText = "Submit Exam";
+    submitBtn.type = "button";
+    submitBtn.onclick = submitExam;
+
+    form.appendChild(submitBtn);
+}
+
+// ================= SUBMIT =================
+function submitExam() {
+    document.exitFullscreen();
+
+    let score = 0;
+
+    answers.forEach((ans, i) => {
+        let selected = document.querySelector(`input[name="q${i}"]:checked`);
+        if (selected && selected.value === ans) {
+            score++;
+        }
+    });
+
+    document.getElementById("quizForm").classList.add("hidden");
+
+    const resultDiv = document.getElementById("result");
+    resultDiv.classList.remove("hidden");
+
+    resultDiv.innerHTML = `
+        <h2>Your Score: ${score} / 30</h2>
+        <button onclick="downloadPDF(${score})">Download Result PDF</button>
+    `;
+}
+
+// ================= PDF DOWNLOAD =================
+function downloadPDF(score) {
+    const text = `MERN MCQ Test Result\n\nScore: ${score}/30`;
+
+    const blob = new Blob([text], { type: "application/pdf" });
+    const link = document.createElement("a");
+
+    link.href = URL.createObjectURL(blob);
+    link.download = "your result.pdf";
+    link.click();
 }
 </script>
 
