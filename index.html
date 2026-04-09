@@ -19,14 +19,12 @@ body {
     color: white;
 }
 
-/* Container */
 .container {
     max-width: 900px;
     margin: 40px auto;
     padding: 20px;
 }
 
-/* Card */
 .card {
     background: rgba(255,255,255,0.05);
     backdrop-filter: blur(12px);
@@ -35,13 +33,11 @@ body {
     box-shadow: 0 8px 30px rgba(0,0,0,0.4);
 }
 
-/* Title */
 h1 {
     text-align: center;
     margin-bottom: 20px;
 }
 
-/* Button */
 .btn {
     display: block;
     margin: 20px auto;
@@ -52,52 +48,27 @@ h1 {
     color: black;
     font-weight: 600;
     cursor: pointer;
-    transition: 0.3s;
 }
 
-.btn:hover {
-    transform: scale(1.05);
-}
-
-/* Warning */
 .warning {
     text-align: center;
     margin-bottom: 15px;
     color: #facc15;
 }
 
-/* Question */
 .question {
     background: rgba(255,255,255,0.07);
     padding: 18px;
     margin-bottom: 15px;
     border-radius: 12px;
-    transition: 0.3s;
 }
 
-.question:hover {
-    background: rgba(255,255,255,0.12);
-}
-
-.question p {
-    margin-bottom: 10px;
-    font-weight: 500;
-}
-
-/* Options */
 label {
     display: block;
     padding: 8px;
-    border-radius: 8px;
     cursor: pointer;
-    transition: 0.2s;
 }
 
-label:hover {
-    background: rgba(255,255,255,0.1);
-}
-
-/* Result */
 .result-box {
     text-align: center;
 }
@@ -113,7 +84,6 @@ label:hover {
 }
 </style>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 
 <body>
@@ -135,66 +105,72 @@ label:hover {
 </div>
 
 <script>
-// ================= QUESTIONS =================
+
+// QUESTIONS
 const questions = [
-"HTML stands for?","Hyperlink tag?","Image tag?","Image path attribute?",
-"List item tag?","Largest heading?","Correct HTML structure?","Form tag?",
-"Password input type?","Table row tag?","CSS stands for?","Text color property?",
-"ID selector?","Background color?","Text size property?","1D layout?",
-"Responsive tool?","Default position?","Inner spacing?","Relative unit?",
-"Variable keyword?","JS comment?","Select by id?","typeof 'Hello'?",
-"Console output?","Click event?","Array syntax?","Strict equality?",
-"DOM stands for?","Add to array?"
+{ question: "What does HTML stand for?", options: ["Hyper Trainer Marking Language","Hyper Text Markup Language","Hyper Text Marketing Language","Hyper Tool Markup Language"]},
+{ question: "Which tag is used to create a hyperlink?", options: ["&lt;link&gt;","&lt;a&gt;","&lt;href&gt;","&lt;url&gt;"]},
+{ question: "Which tag is used for inserting an image?", options: ["&lt;img&gt;","&lt;image&gt;","&lt;src&gt;","&lt;pic&gt;"]},
+{ question: "Which attribute is used in &lt;img&gt; tag?", options: ["link","src","href","path"]},
+{ question: "Which tag is used to create a list item?", options: ["&lt;ul&gt;","&lt;li&gt;","&lt;ol&gt;","&lt;list&gt;"]},
+{ question: "Largest heading tag?", options: ["&lt;h6&gt;","&lt;heading&gt;","&lt;h1&gt;","&lt;head&gt;"]},
+{ question: "Correct HTML structure?", options: ["&lt;head&gt;&lt;html&gt;&lt;body&gt;","&lt;html&gt;&lt;head&gt;&lt;body&gt;","&lt;html&gt;&lt;body&gt;&lt;head&gt;","&lt;body&gt;&lt;html&gt;&lt;head&gt;"]},
+{ question: "Which tag is used to create a form?", options: ["&lt;form&gt;","&lt;input&gt;","&lt;button&gt;","&lt;submit&gt;"]},
+{ question: "Password input type?", options: ["text","password","hidden","secure"]},
+{ question: "Table row tag?", options: ["&lt;td&gt;","&lt;th&gt;","&lt;tr&gt;","&lt;row&gt;"]},
+
+{ question: "What does CSS stand for?", options: ["Creative Style Sheets","Cascading Style Sheets","Computer Style Sheets","Colorful Style Sheets"]},
+{ question: "Text color property?", options: ["font-color","text-color","color","text-style"]},
+{ question: "ID selector?", options: [".box","#box","box","*box"]},
+{ question: "Background color property?", options: ["bg-color","background-color","color-bg","bgcolor"]},
+{ question: "Text size property?", options: ["font-style","text-size","font-size","size"]},
+{ question: "1D layout?", options: ["Grid","Flexbox","Float","Inline"]},
+{ question: "Responsive tool?", options: ["display","media queries","position","float"]},
+{ question: "Default position?", options: ["relative","absolute","static","fixed"]},
+{ question: "Inner spacing?", options: ["margin","padding","border","spacing"]},
+{ question: "Relative unit?", options: ["px","cm","em","mm"]},
+
+{ question: "Variable keyword?", options: ["var","let","const","All of the above"]},
+{ question: "JS comment?", options: ["//","&lt;!-- --&gt;","##","**"]},
+{ question: "Select by id?", options: ["getElement()","querySelector()","getElementById()","selectId()"]},
+{ question: "typeof 'Hello'?", options: ["string","text","object","char"]},
+{ question: "Console output?", options: ["print()","log()","console.log()","display()"]},
+{ question: "Click event?", options: ["onhover","onchange","onclick","onmouse"]},
+{ question: "Array syntax?", options: ["{}","[]","()","&lt;&gt;"]},
+{ question: "Strict equality?", options: ["==","=","===","!="]},
+{ question: "DOM stands for?", options: ["Document Object Model","Data Object Model","Digital Object Model","Document Oriented Model"]},
+{ question: "Add to array?", options: ["push()","pop()","shift()","add()"]}
 ];
 
-const options = ["A","B","C","D"];
-
+// ANSWERS
 const answers = [
 "B","B","A","B","B","C","B","A","B","C",
 "B","C","B","B","C","B","B","C","B","C",
 "D","A","C","A","C","C","B","C","A","A"
 ];
 
-// ================= START =================
+// STATE
 let warnings = 3;
+let submitted = false;
 
+// START
 function startExam() {
     document.querySelector(".btn").style.display = "none";
     document.getElementById("quizForm").classList.remove("hidden");
-
-    enterFullscreen();
     renderQuestions();
 }
 
-// ================= FULLSCREEN =================
-function enterFullscreen() {
-    document.documentElement.requestFullscreen();
-}
-
-document.addEventListener("fullscreenchange", () => {
-    if (!document.fullscreenElement) {
-        alert("⚠️ Fullscreen required!");
-        enterFullscreen();
-    }
-});
-
-// ================= TAB SWITCH =================
+// WARNING SYSTEM
 document.addEventListener("visibilitychange", () => {
-    if (document.hidden) {
-        warnings--;
+    if (document.hidden && !submitted) {
+        if (warnings > 0) warnings--;
         document.getElementById("warningBox").innerText = "Warnings Left: " + warnings;
 
-        alert("⚠️ Do not switch tabs!");
-
-        if (warnings <= 0) submitExam();
+        if (warnings === 0) submitExam();
     }
 });
 
-// ================= DISABLE CHEATS =================
-document.addEventListener("contextmenu", e => e.preventDefault());
-document.addEventListener("copy", e => e.preventDefault());
-
-// ================= RENDER =================
+// RENDER
 function renderQuestions() {
     const form = document.getElementById("quizForm");
 
@@ -202,10 +178,11 @@ function renderQuestions() {
         let div = document.createElement("div");
         div.classList.add("question");
 
-        div.innerHTML = `<p>${index+1}. ${q}</p>
-        ${options.map(opt =>
+        div.innerHTML = `<p>${index+1}. ${q.question}</p>
+        ${q.options.map((opt, i) =>
             `<label>
-                <input type="radio" name="q${index}" value="${opt}"> ${opt}
+                <input type="radio" name="q${index}" value="${String.fromCharCode(65+i)}">
+                ${String.fromCharCode(65+i)}. ${opt}
             </label>`
         ).join("")}`;
 
@@ -221,9 +198,10 @@ function renderQuestions() {
     form.appendChild(btn);
 }
 
-// ================= SUBMIT =================
+// SUBMIT
 function submitExam() {
-    document.exitFullscreen();
+    if (submitted) return;
+    submitted = true;
 
     let score = 0;
 
@@ -240,29 +218,10 @@ function submitExam() {
     result.innerHTML = `
         <h2>🎉 Test Completed</h2>
         <div class="score">Score: ${score} / 30</div>
-        <button class="btn" onclick="downloadPDF(${score})">Download Result</button>
+        <button class="btn" onclick="window.location.href='test2.html'">Start Test 2</button>
     `;
 }
 
-// ================= PDF =================
-function downloadPDF(score) {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
-
-    doc.setFont("helvetica", "bold");
-    doc.setFontSize(20);
-    doc.text("MERN MCQ Test Result", 20, 30);
-
-    doc.setFontSize(14);
-    doc.setFont("helvetica", "normal");
-
-    doc.text(`Score: ${score} / 30`, 20, 50);
-    doc.text(`Status: ${score >= 15 ? "Pass" : "Fail"}`, 20, 60);
-
-    doc.text("Powered by Marshall Institute", 20, 80);
-
-    doc.save("Result.pdf");
-}
 </script>
 
 </body>
