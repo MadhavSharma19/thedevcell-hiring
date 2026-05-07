@@ -108,57 +108,61 @@ label {
 
 // QUESTIONS
 const questions = [
-{ question: "Which symbol is used for input in Python?", options: ["print()","input()","scan()","get()"]},
-{ question: "What will print(5 + 3 * 2) output?", options: ["16","11","13","10"]},
-{ question: "Which keyword is used for condition?", options: ["loop","if","check","when"]},
-{ question: "What will this print?\nfor i in range(3): print(i)", options: ["1 2 3","0 1 2","0 1 2 3","Error"]},
-{ question: "Which loop runs at least once?", options: ["for","while","do-while","none"]},
-{ question: "Even number condition?", options: ["n % 2 == 1","n / 2 == 0","n % 2 == 0","n == 2"]},
-{ question: "Which is used for output?", options: ["display()","print()","show()","output()"]},
-{ question: "What is a variable?", options: ["Loop","Storage for data","Function","Operator"]},
-{ question: "Which loop is best for fixed iterations?", options: ["while","for","do-while","none"]},
-{ question: "What will range(1,5) give?", options: ["1 2 3 4","1 2 3 4 5","0 1 2 3 4","2 3 4 5"]},
 
-{ question: "How to create list?", options: ["{}","()","[]","<>"]},
-{ question: "Index starts from?", options: ["1","0","-1","2"]},
-{ question: "len([1,2,3]) = ?", options: ["2","3","4","Error"]},
-{ question: "Add element at end?", options: ["insert()","add()","append()","push()"]},
-{ question: "Remove element?", options: ["delete()","remove()","pop()","Both B & C"]},
-{ question: "arr[0] means?", options: ["last element","first element","middle","error"]},
-{ question: "Traversal means?", options: ["Sorting","Searching","Visiting all elements","Deleting"]},
-{ question: "Max of list [2,5,1]?", options: ["1","2","5","0"]},
-{ question: "Frequency means?", options: ["Sum","Count of occurrences","Max value","Min value"]},
-{ question: "Second largest in [1,5,3]?", options: ["1","3","5","0"]},
+{ question: "Which function is used to take input in Python?", options: ["print()","input()","scan()","read()"]},
+{ question: "Which function is used to display output?", options: ["show()","display()","print()","echo()"]},
+{ question: "Python is a _____ language.", options: ["Low-level","Machine","High-level","Assembly"]},
+{ question: "Which symbol is used for comments in Python?", options: ["//","#","<!-- -->","/* */"]},
+{ question: "Which keyword is used to define a variable?", options: ["var","int","No keyword needed","let"]},
+{ question: "What is the correct extension of Python files?", options: [".pt",".python",".py",".p"]},
+{ question: "Which data type stores text?", options: ["int","float","str","bool"]},
+{ question: "Which data type stores True or False?", options: ["bool","str","int","list"]},
+{ question: "What will print(2 + 3) output?", options: ["23","5","6","Error"]},
+{ question: "What will print(10 - 4) output?", options: ["14","6","10","4"]},
 
-{ question: "Linear search checks?", options: ["First only","Random","One by one","Last only"]},
-{ question: "Binary search needs?", options: ["Sorted array","Random array","Linked list","Stack"]},
-{ question: "Binary search time complexity?", options: ["O(n)","O(log n)","O(1)","O(n²)"]},
-{ question: "Linear search complexity?", options: ["O(1)","O(log n)","O(n)","O(n²)"]},
-{ question: "Middle index formula?", options: ["(l+r)","(l+r)/2","(l*r)/2","l-r"]},
-{ question: "Binary search compares with?", options: ["First","Last","Middle","Random"]},
-{ question: "If target < mid?", options: ["Go right","Stop","Go left","Restart"]},
-{ question: "Binary search works on unsorted array?", options: ["Yes","No","Sometimes","Only small arrays"]},
-{ question: "Linear search best case?", options: ["Last","Middle","First","None"]},
-{ question: "Binary search worst case?", options: ["O(n)","O(log n)","O(1)","O(n²)"]},
+{ question: "What will print(3 * 2) output?", options: ["5","6","32","Error"]},
+{ question: "What will print(8 / 2) output?", options: ["4","2","8","16"]},
+{ question: "Which operator is used for modulus?", options: ["%","/","//","**"]},
+{ question: "What does 10 % 3 return?", options: ["3","1","0","10"]},
+{ question: "Which operator is used for power?", options: ["^","**","//","%%"]},
+{ question: "What will print(2 ** 3) output?", options: ["6","8","9","5"]},
+{ question: "Which operator checks equality?", options: ["=","!=","==","<>"]},
+{ question: "Which operator means 'not equal to'?", options: ["<>","!=","==","="]},
+{ question: "What will 5 > 3 return?", options: ["True","False","5","3"]},
+{ question: "What will 2 < 1 return?", options: ["2","1","True","False"]},
+
+{ question: "Which keyword is used for condition checking?", options: ["check","if","when","loop"]},
+{ question: "Which keyword is used for another condition?", options: ["elseif","elif","else if","other"]},
+{ question: "Which keyword is used when all conditions are false?", options: ["default","none","else","elif"]},
+{ question: "What is indentation used for in Python?", options: ["Decoration","Spacing","Block of code","Comments"]},
+{ question: "Which is a correct if statement?", options: ["if x>5","if(x>5):","if x>5:","Both B & C"]},
+{ question: "What will happen if indentation is wrong?", options: ["No issue","Indentation Error","Syntax Error","Runtime Error"]},
+{ question: "What will print?\nif 5>2:\n print('Hi')", options: ["Hi","Error","Nothing","5"]},
+{ question: "Which condition checks even number?", options: ["n % 2 == 1","n % 2 == 0","n / 2 == 0","n == 0"]},
+{ question: "Which condition checks odd number?", options: ["n % 2 == 0","n / 2 == 1","n % 2 != 0","n == 1"]},
+{ question: "What will this return?\n10 >= 10", options: ["False","10","True","Error"]},
 
 // Assertion Reason
-{ question: "Assertion: Binary search is faster than linear search\nReason: It divides the array into halves", options: ["A) Both true and reason correct","B) Both true but reason wrong","C) Assertion true reason false","D) Both false"]},
-{ question: "Assertion: Linear search works on unsorted arrays\nReason: It checks elements one by one", options: ["A","B","C","D"]},
-{ question: "Assertion: Lists are mutable\nReason: Elements can be changed", options: ["A","B","C","D"]},
-{ question: "Assertion: range(5) gives 1 to 5\nReason: Range starts from 1", options: ["A","B","C","D"]},
-{ question: "Assertion: Even number check is n % 2 == 0\nReason: Modulus gives remainder", options: ["A","B","C","D"]},
-{ question: "Assertion: Binary search can be used on any list\nReason: It works faster", options: ["A","B","C","D"]}
+{ question: "Assertion: Python uses indentation\nReason: Indentation defines blocks of code", options: ["A) Both true and reason correct","B) Both true but reason wrong","C) Assertion true reason false","D) Both false"]},
+
+{ question: "Assertion: input() is used for taking input\nReason: print() displays output", options: ["A","B","C","D"]},
+
+{ question: "Assertion: == checks equality\nReason: = is assignment operator", options: ["A","B","C","D"]},
+
+{ question: "Assertion: else runs when if condition is false\nReason: else needs no condition", options: ["A","B","C","D"]},
+
+{ question: "Assertion: 5 % 2 gives remainder\nReason: Modulus operator returns remainder", options: ["A","B","C","D"]},
+
+{ question: "Assertion: Python is case sensitive\nReason: Name and name are different variables", options: ["A","B","C","D"]}
+
 ];
 
-// ANSWERS
 const answers = [
-"B","B","B","B","D","C","B","B","B","A",
-"C","B","B","C","D","B","C","C","B","B",
-"C","A","B","C","B","C","C","B","C","B",
-"A","A","A","D","A","D"
+"B","C","C","B","C","C","C","A","B","B",
+"B","A","A","B","B","B","C","B","A","D",
+"B","B","C","C","D","B","A","B","C","C",
+"A","A","A","A","A","A"
 ];
-
-
 // STATE
 let warnings = 3;
 let submitted = false;
